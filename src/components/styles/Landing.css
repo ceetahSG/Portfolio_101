@@ -3,10 +3,24 @@
   display: none;
 }
 
-/* Remove mobile photo and ensure 3D character is always hidden on mobile */
+/* Keep the 3D character visible on mobile without covering the content. */
 @media only screen and (max-width: 768px) {
   .character-model {
-    display: none !important;
+    display: block !important;
+    height: min(58vh, 430px);
+    width: 100%;
+    bottom: 100px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .character-model::before {
+    display: none;
+  }
+
+  .character-model::after {
+    height: 140px;
+    bottom: -30px;
   }
 
   .landing-section,
@@ -80,6 +94,8 @@
     /* Force auto height */
     width: 100% !important;
     order: 3;
+    position: relative !important;
+    z-index: 10;
     /* Third: Subtitles */
   }
 
@@ -125,7 +141,7 @@
 
   /* Show mobile photo */
   .mobile-photo {
-    display: block;
+    display: none;
     position: relative !important;
     width: 100%;
     max-width: 380px;

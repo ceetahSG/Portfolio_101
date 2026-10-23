@@ -44,12 +44,14 @@ body {
     height: auto !important;
     min-height: 100svh !important;
     touch-action: manipulation;
+    overscroll-behavior-x: none;
   }
 
   html {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     touch-action: manipulation;
+    overscroll-behavior-x: none;
   }
 
   .container-main {
