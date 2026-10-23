@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { config } from "../config";
+import ProductionEventCard from "../components/ProductionEventCard";
 import "./MyWorks.css";
 
+type WorkCategory = "all" | "development" | "production";
+
 const MyWorks = () => {
+  const [activeCategory, setActiveCategory] = useState<WorkCategory>("all");
   const featuredRepositoryUrls = new Set(
     config.projects.map((project) => project.repository),
   );
-  const projects = [
+  const developmentProjects = [
     ...config.projects,
     ...config.githubProjects
       .filter((project) => !featuredRepositoryUrls.has(project.repository))
@@ -20,9 +25,13 @@ const MyWorks = () => {
             "https://github.com/",
             "",
           )}`,
-        description: "A project from my public GitHub repositories.",
+        description:
+          "description" in project && project.description
+            ? project.description
+            : "A project from my public GitHub repositories.",
       })),
   ].slice(0, 9);
+  const projects = developmentProjects;
 
   return (
     <div className="myworks-page">
@@ -33,11 +42,32 @@ const MyWorks = () => {
         <h1>
           All <span>Works</span>
         </h1>
-        <p>A collection of all my projects and creations</p>
+        <p>A collection of my development projects and live production work</p>
+        <div className="myworks-filters" role="tablist" aria-label="Work categories">
+          {(
+            [
+              ["all", "All Works"],
+              ["development", "Development"],
+              ["production", "Live Production"],
+            ] as const
+          ).map(([category, label]) => (
+            <button
+              key={category}
+              className={activeCategory === category ? "active" : ""}
+              onClick={() => setActiveCategory(category)}
+              role="tab"
+              aria-selected={activeCategory === category}
+              type="button"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="myworks-grid">
-        {projects.map((project, index) => {
+        {activeCategory !== "production" &&
+          projects.map((project, index) => {
           const cardContent = (
             <>
               <div className="myworks-card-number">0{index + 1}</div>
@@ -57,7 +87,7 @@ const MyWorks = () => {
                 <p className="myworks-card-description">{project.description}</p>
                 <p className="myworks-card-tech">{project.technologies}</p>
                 <div className="myworks-card-links">
-                  {project.repository && (
+                  {"repository" in project && project.repository && (
                     <a
                       href={project.repository}
                       target="_blank"
@@ -91,7 +121,15 @@ const MyWorks = () => {
               {cardContent}
             </div>
           );
-        })}
+          })}
+        {activeCategory !== "development" &&
+          config.productionEvents.map((event, index) => (
+            <ProductionEventCard
+              key={event.id}
+              event={event}
+              index={index}
+            />
+          ))}
       </div>
     </div>
   );

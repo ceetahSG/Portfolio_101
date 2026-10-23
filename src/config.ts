@@ -2,6 +2,20 @@ import bazarDorImage from "./assets/bazarDor.png";
 import bdnews24Image from "./assets/bdnews24.png";
 import unitrackBdImage from "./assets/unitrackBd.png";
 
+export interface ProductionEvent {
+  id: string;
+  title: string;
+  year: string;
+  role?: string;
+  description: string;
+  highlights: string[];
+  tags: string[];
+  image?: string;
+  links?: { label: string; url: string }[];
+  accent: "purple" | "gold" | "cyan";
+  featured?: boolean;
+}
+
 export const config = {
   developer: {
     name: "Jihadul",
@@ -66,7 +80,7 @@ export const config = {
         "Next.js, TypeScript, Tailwind CSS, DaisyUI, Better Auth, MongoDB",
       image: bdnews24Image,
       description:
-        "A Bengali news portal with category and article pages, a most-read section, a scrolling news ticker and email/password sign-in. Built as part of my practical learning journey.",
+        "A modern Bengali news portal with current and categorized stories, popular news, article pages, a scrolling ticker, responsive navigation, and Better Auth email/password sign-in backed by MongoDB.",
       repository: "https://github.com/ceetahSG/BanglaNews24",
       live: "https://bangla-news24-rho.vercel.app",
     },
@@ -75,21 +89,21 @@ export const config = {
       title: "UniTrack BD",
       category: "Team Project / In Progress",
       status: "In Progress",
-      technologies: "Project management, Frontend development",
+      technologies: "React, TypeScript, Mobile UI",
       image: unitrackBdImage,
       description:
-        "A university bus tracking and automated payment system built by a student team. Planned features: bus tracking with estimated arrival, wallet top-ups, QR boarding with fare deduction, and staff and admin dashboards.",
+        "A mobile app UI for UniTrack BD, a university transportation project. The interface was created from the team's Figma design and is set up to run with npm.",
       repository: "https://github.com/ceetahSG/UniTrackBd-Frontend",
       live: "",
     },
     {
       id: 3,
       title: "BazarDor",
-      category: "Web App / In Progress",
-      technologies: "Details coming soon",
+      category: "Web App",
+      technologies: "Next.js, React, TypeScript, Tailwind CSS, HeroUI, Better Auth, MongoDB",
       image: bazarDorImage,
       description:
-        "A web app that lists product prices and highlights items going up or down, with sorting by price movement and a detail page for each product.",
+        "A deployed Bangla market price tracker that combines live product pricing, category browsing, price movement trends, product details, and email/password or social authentication.",
       repository: "https://github.com/ceetahSG/bazardor",
       live: "https://bazardor-mocha.vercel.app",
     },
@@ -98,6 +112,8 @@ export const config = {
     {
       id: "book-vibe",
       title: "Book Vibe",
+      description:
+        "A Next.js application bootstrapped with create-next-app and prepared for a responsive book-focused web experience.",
       image: "https://opengraph.githubassets.com/1/ceetahSG/Book-Vibe",
       repository: "https://github.com/ceetahSG/Book-Vibe",
       live: "https://book-vibe-chetah.vercel.app",
@@ -105,6 +121,8 @@ export const config = {
     {
       id: "fit-log",
       title: "Fit Log",
+      description:
+        "A workout library for browsing exercises, viewing equipment and performance details, building a daily plan with a five-lift cap, saving workouts, tracking plan metrics, and sorting by duration, calories, or rating.",
       image: "https://opengraph.githubassets.com/1/ceetahSG/Fit-Log",
       repository: "https://github.com/ceetahSG/Fit-Log",
       live: "https://fit-log-chetah.vercel.app",
@@ -112,6 +130,8 @@ export const config = {
     {
       id: "stress-monitor-device",
       title: "Stress Monitor Device",
+      description:
+        "A project repository for a stress-monitoring device.",
       image:
         "https://opengraph.githubassets.com/1/ceetahSG/Stress-Monitor-Device",
       repository: "https://github.com/ceetahSG/Stress-Monitor-Device",
@@ -119,6 +139,8 @@ export const config = {
     {
       id: "dev-stack",
       title: "DevStack",
+      description:
+        "An interactive React application that helps developers explore technologies by category, build a personalized tech stack, and preview their selected tools in real time.",
       image: "https://opengraph.githubassets.com/1/ceetahSG/devStack",
       repository: "https://github.com/ceetahSG/devStack",
       live: "https://dev-stack-flax.vercel.app",
@@ -126,6 +148,8 @@ export const config = {
     {
       id: "bpl-dream",
       title: "BPL Dream",
+      description:
+        "A Next.js application bootstrapped with create-next-app.",
       image: "https://opengraph.githubassets.com/1/ceetahSG/bpl-dream",
       repository: "https://github.com/ceetahSG/bpl-dream",
       live: "https://bpl-dream-rouge.vercel.app",
@@ -133,6 +157,8 @@ export const config = {
     {
       id: "react-mart",
       title: "React Mart",
+      description:
+        "A React and TypeScript product app that fetches item data from an external API and displays it in a responsive interface, built to practice hooks and dynamic rendering.",
       image: "https://opengraph.githubassets.com/1/ceetahSG/React-Mart",
       repository: "https://github.com/ceetahSG/React-Mart",
       live: "https://react-mart-theta.vercel.app",
@@ -275,6 +301,84 @@ export const config = {
       repository: "https://github.com/ceetahSG/CPlusPlus",
     },
   ],
+  productionEvents: [
+    {
+      id: "discovery-one-fifa-royale-2023",
+      title: "Discovery One FIFA Royale",
+      year: "2023",
+      role: "Head of Management",
+      description:
+        "A large-scale FIFA tournament requiring coordinated match operations and event management.",
+      highlights: ["BDT 15 lakh reported prize pool", "700+ matches", "4,000+ attendees"],
+      tags: ["Tournament Management", "Match Operations"],
+      accent: "gold",
+      featured: true,
+    },
+    {
+      id: "mlbb-bangladesh-championship-fall-2023",
+      title: "MLBB Bangladesh Championship",
+      year: "Fall 2023",
+      description:
+        "A Mobile Legends: Bang Bang championship with a strong competitive broadcast identity.",
+      highlights: ["Associated with the first official MLBB API use in Bangladesh"],
+      tags: ["Broadcast Production", "Technical Operations"],
+      accent: "purple",
+      featured: true,
+    },
+    {
+      id: "besl-season-1",
+      title: "BESL Season 1",
+      year: "Season 1",
+      description:
+        "A competitive esports event included in my live production portfolio.",
+      highlights: [],
+      tags: ["Broadcast Production"],
+      accent: "cyan",
+    },
+    {
+      id: "mobile-mania-2024",
+      title: "Mobile Mania",
+      year: "2024",
+      description:
+        "A mobile esports event delivered as part of my competitive broadcast experience.",
+      highlights: [],
+      tags: ["Broadcast Production", "Tournament Operations"],
+      accent: "purple",
+    },
+    {
+      id: "acer-predator-league-bangladesh-grand-finale",
+      title: "Acer Predator League Bangladesh Grand Finale",
+      year: "Grand Finale",
+      description:
+        "A premium gaming event finale hosted at Independent University, Bangladesh (IUB).",
+      highlights: ["Independent University, Bangladesh (IUB)"],
+      tags: ["Live Production", "Event Operations"],
+      accent: "gold",
+      featured: true,
+    },
+    {
+      id: "oraimo-challengers-series-2026",
+      title: "Oraimo Challengers Series",
+      year: "2026",
+      description:
+        "A competitive esports broadcast event included in my production credits.",
+      highlights: [],
+      tags: ["Broadcast Production"],
+      accent: "purple",
+    },
+    {
+      id: "ffbc-2025",
+      title: "FFBC",
+      year: "2025",
+      role: "IT Infrastructure Lead",
+      description:
+        "A technically focused esports operation where infrastructure and match-data workflows were central to delivery.",
+      highlights: ["10,000+ lines of raw match data per match"],
+      tags: ["IT Infrastructure", "Match Data", "Technical Operations"],
+      accent: "cyan",
+      featured: true,
+    },
+  ] satisfies ProductionEvent[],
   contact: {
     email: "sajim.ceetah@gmail.com",
     github: "https://github.com/ceetahSG",

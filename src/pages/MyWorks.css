@@ -43,6 +43,32 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+.myworks-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.myworks-filters button {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.myworks-filters button:hover,
+.myworks-filters button.active {
+  border-color: var(--accentColor);
+  color: #000;
+  background: var(--accentColor);
+}
+
 .myworks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -170,6 +196,178 @@
   color: #000;
 }
 
+.production-card {
+  --production-accent: var(--accentColor);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.production-card-gold {
+  --production-accent: #e8bd67;
+}
+
+.production-card-cyan {
+  --production-accent: #66d9e8;
+}
+
+.production-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--production-accent);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--production-accent) 15%, transparent);
+}
+
+.production-card-art {
+  position: relative;
+  min-height: 210px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 20%, color-mix(in srgb, var(--production-accent) 35%, transparent), transparent 45%),
+    linear-gradient(135deg, #17121f, #080808);
+}
+
+.production-card-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.75));
+  pointer-events: none;
+}
+
+.production-card-art img {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.production-card:hover .production-card-art img {
+  transform: scale(1.05);
+}
+
+.production-card-fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 210px;
+  gap: 12px;
+  color: var(--production-accent);
+  background:
+    linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.05) 30%, transparent 31%),
+    linear-gradient(160deg, transparent 58%, rgba(255, 255, 255, 0.04) 58%, transparent 59%);
+}
+
+.production-card-fallback span {
+  font-size: 72px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.production-card-fallback strong {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.production-card-number,
+.production-card-year {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.production-card-number {
+  left: 15px;
+  color: var(--production-accent);
+}
+
+.production-card-year {
+  right: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.production-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.production-card-heading h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.production-card-role {
+  margin: 8px 0 0;
+  color: var(--production-accent);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.production-card-description {
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.production-card-highlights {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.production-card-highlights li::marker {
+  color: var(--production-accent);
+}
+
+.production-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.production-card-tags span {
+  padding: 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--production-accent) 45%, transparent);
+  border-radius: 12px;
+  color: var(--production-accent);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+
+.production-card-links {
+  margin-top: 18px;
+}
+
+.production-card-links a {
+  color: var(--production-accent);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.production-card-links a:hover {
+  color: #fff;
+}
+
 /* Responsive */
 @media only screen and (max-width: 768px) {
   .myworks-page {
@@ -185,6 +383,10 @@
   }
 
   .myworks-card-info {
+    padding: 20px;
+  }
+
+  .production-card-content {
     padding: 20px;
   }
 }
