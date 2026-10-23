@@ -93,6 +93,15 @@ const Contact = () => {
             >
               Linkedin <MdArrowOutward />
             </a>)}
+            {config.contact.discord && (<a
+              href={`https://discord.com/users/${config.contact.discord}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="disable"
+              className="contact-social"
+            >
+              Discord <MdArrowOutward />
+            </a>)}
           </div>
           <div className="contact-box">
             <h2>

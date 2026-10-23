@@ -278,7 +278,8 @@ export const config = {
   contact: {
     email: "sajim.ceetah@gmail.com",
     github: "https://github.com/ceetahSG",
-    linkedin: "", // add your LinkedIn URL; hidden while empty
+    linkedin: "https://www.linkedin.com/in/md-sajim-452195244/",
+    discord: "cheetah_010",
     resume: "", // add a path like "/resume.pdf" after putting the file in /public; hidden while empty
   },
   skills: {

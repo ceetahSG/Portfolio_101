@@ -1,4 +1,5 @@
 import {
+  FaDiscord,
   FaGithub,
   FaLinkedinIn,
 } from "react-icons/fa6";
@@ -66,6 +67,16 @@ const SocialIcons = () => {
         {config.contact.linkedin && (<span>
           <a href={config.contact.linkedin} target="_blank" rel="noopener noreferrer">
             <FaLinkedinIn />
+          </a>
+        </span>)}
+        {config.contact.discord && (<span>
+          <a
+            href={`https://discord.com/users/${config.contact.discord}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Discord: ${config.contact.discord}`}
+          >
+            <FaDiscord />
           </a>
         </span>)}
       </div>
